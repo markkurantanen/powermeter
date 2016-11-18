@@ -113,7 +113,7 @@ void reconnect() {
       Serial.println("connected");
       // Once connected, publish an announcement...
 //      client.publish("outTopic", "hello world");
-      client.publish(outTopic, "Kurtinmaentie power-reader - connected");
+      client.publish(outTopic, "My power-reader - connected");
       // ... and resubscribe
       client.subscribe(inTopic);
     } else {
