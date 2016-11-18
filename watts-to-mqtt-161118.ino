@@ -15,12 +15,12 @@
 const char* ssid = "*******";
 const char* password = "******";
 
-const char* mqtt_server = "address.com";
-const char* outTopic = "/topic/topic";
-const char* powerTopic = "topic/topic/1";
-const char* inTopic = "topic/topic";
+const char* mqtt_server = "my.***.com";
+const char* outTopic = "put/some/topic/here"; // this one tells to mqtt which sensor is up and connected
+const char* powerTopic = "put/some/topic/meter-number"; // this one is used to report the pulses
+const char* inTopic = "intopic/topic"; // this is for callback, for instance, reset the ESP etc
 
-float sleeptime=20000;
+float sleeptime=20000; // 20 seconds sleeptime, not really sleeping...
 float sleepseconds=0;
 
 unsigned long sendPeriod = 20000; // 20 second interval for updating pulses to mqtt
@@ -96,7 +96,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
   // Switch on the LED if an 1 was received as first character
   if ((char)payload[0] == '1') {
-    digitalWrite(0, HIGH);   // Turn the LED on (Note that LOW is the voltage level
+    digitalWrite(0, HIGH);   // Turn the LED on and off to see it works and listens. Another is espreset to reset the chip
     delay(2000);
     digitalWrite(0, LOW);
     counter = 0;
