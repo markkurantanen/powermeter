@@ -152,7 +152,7 @@ if (counter > lastcounter) {
       char* charcounter = f2s(counter,0);
       client.publish(powerTopic,charkwh);   // publish kwh
       client.publish(powerTopic, chardiffcounter); // publish counter since last send period
-      client.publish(powerTopic, charcounter);
+      client.publish(powerTopic, charcounter); // use this one to send cumulative pulses, needs to reset the meter once per day to get real pulses per day
       lastcounter = counter;
     }
 }
